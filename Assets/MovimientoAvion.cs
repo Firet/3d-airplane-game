@@ -15,6 +15,7 @@ public class MovimientoAvion : MonoBehaviour {
 	public float turboSpeed = 0.1f;
 	public bool tocandoSuelo = false;
 	
+	public gamemaster gm;
 	
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
@@ -77,18 +78,22 @@ public class MovimientoAvion : MonoBehaviour {
 
 	public void OnCollisionEnter(Collision choque) {
 		
-		if(choque.gameObject.name == "Terrain")
+		if(choque.gameObject.tag == "Piso")
         {
 			forwardSpeed = 0;
 			yawSpeed = 0;
+
+			gm.RespawnAvion(gameObject);
+			Destroy(gameObject);
         }
 	}
 	public void OnCollisionExit(Collision choque) {
 		
-		if(choque.gameObject.name == "Terrain")
+		if(choque.gameObject.tag == "Piso")
         {
 			forwardSpeed = 50;
 			yawSpeed = 1;
+			Debug.Log("Salió de la colisión " + choque.gameObject.tag);
         }
 	}
 }
@@ -96,7 +101,7 @@ public class MovimientoAvion : MonoBehaviour {
 
 
 
-		// Basado en unity plane tutorial https://www.youtube.com/watch?v=lCulq9J0Y9E&t=43s
+		//  unity plane tutorial https://www.youtube.com/watch?v=lCulq9J0Y9E&t=43s
 		/* 
 		Official gta v control settings: 
 		W = Throttle up S= Throttle down. A and D is rudder left and right. 
