@@ -15,7 +15,13 @@ public class MovimientoAvion : MonoBehaviour {
 	public float rollSpeed;
 	
 	public GameMaster gm;
-	
+
+	public Transform spawnMisil;
+	public GameObject misil;
+
+	Vector3 pos;
+	Vector3 posicionPrevia;
+
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
 		float drag = rb.drag;
@@ -58,6 +64,19 @@ public class MovimientoAvion : MonoBehaviour {
 
 		}
 
+
+		// Uso GetKeyDown para limitar la cantidad de disparos. para al tocar la barra se llame una sola vez
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
+			// Creo un misil y le paso el spawnpoint y la rotacion
+			GameObject instanciaMisil = Instantiate(misil, spawnMisil.position, Quaternion.Euler(90.0f, 0, 0));
+			
+			// Le estoy agregando la velocidad al misil que tiramos
+			//instanciaMisil.GetComponent<Rigidbody>().velocity = rb.velocity * 1.5f);
+
+			instanciaMisil.GetComponent<Rigidbody>().AddForce((pos - posicionPrevia) * 2000f);
+		}
+
 		//Esto es para que gire(roll)
 		float ejeInvertido = - 1;
 		gameObject.transform.Rotate(Input.GetAxis("Vertical"), 0, ejeInvertido * Input.GetAxis("Horizontal") * rollSpeed);
@@ -65,6 +84,11 @@ public class MovimientoAvion : MonoBehaviour {
 		
 		//Esto es para que vaya para adelante
 		gameObject.transform.position += gameObject.transform.forward * Time.deltaTime * forwardSpeed;
+
+		posicionPrevia = pos;
+		pos = transform.position;
+
+
 
 		// Esto es para que pierda velocidad cuando sube y gane velocidad cuando baje (dificulta hacer la "vuelta al mundo")
 		//forwardSpeed -= transform.forward.y * Time.deltaTime * 20.0f;

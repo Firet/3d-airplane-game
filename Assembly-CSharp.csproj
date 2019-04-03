@@ -53,7 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\crearTanques.cs" />
+     <Compile Include="Assets\Scripts\ComportamientoMisil.cs" />
+     <Compile Include="Assets\Scripts\CrearTanques.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\MovimientoAvion.cs" />
      <Compile Include="Assets\Scripts\MovimientoTanque.cs" />

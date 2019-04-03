@@ -24,6 +24,7 @@ public class MovimientoTanque : MonoBehaviour
         else 
         {
             Debug.Log("No se encuentra el avion");
+            avion = GameObject.Find("Avion entero(Clone)");
         }
     }
 }

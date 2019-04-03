@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class crearTanques : MonoBehaviour
+public class CrearTanques : MonoBehaviour
 {
-    public Transform SpawnPointTanque;
-    public GameObject tanquePrefab;
-    GameObject tanqueGo;
+
+    public int cantidadTanques = 1;
+    public float timeGap = 0.1f;
+    public GameObject tanque; 
 
     void Start()
-    {    
-        CrearTanque(SpawnPointTanque, 0);
-        CrearTanque(SpawnPointTanque, 10);
-    }
-
-    void Update()
     {
-        
+        PrepararTanques();
     }
 
-    void CrearTanque(Transform a, int desvio)  {
-        //Debug.Log("Funciona CrearTanque");
-        //tanqueGo = Instantiate(tanquePrefab, a.position, Quaternion.identity);
-        tanqueGo = Instantiate(tanquePrefab, a.position += (Vector3.left * desvio), Quaternion.identity);
+    public void PrepararTanques() 
+    {
+        for(int i = 0; i < cantidadTanques; i++) 
+        {
+            Invoke("CrearTanque", i * timeGap);
+        }
+    }
+    
+    void CrearTanque() 
+    {
+        Instantiate(tanque, transform.position, Quaternion.identity);
     }
 }

@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1735122181934600067}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -30.056002, y: 0, z: 0}
 --- !u!33 &1735122181344807697
 MeshFilter:
@@ -122,7 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 1735122181934600067}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1735122181683822237
 MeshFilter:
@@ -213,7 +213,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.2, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1735122181934600067}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1735122181887420942
 MeshFilter:
@@ -303,6 +303,7 @@ Transform:
   m_LocalPosition: {x: 72.64, y: 14.19, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1751554057186588594}
   - {fileID: 1735122181683822236}
   - {fileID: 1735122181887420939}
   - {fileID: 1735122181950724160}
@@ -331,6 +332,8 @@ MonoBehaviour:
   yawSpeed: 1
   rollSpeed: 1
   gm: {fileID: 0}
+  spawnMisil: {fileID: 1751554057186588594}
+  misil: {fileID: 308085430452670670, guid: c66ae58c056c91849be8600ac08a0d6a, type: 3}
 --- !u!65 &1735122181934600065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -391,7 +394,7 @@ Transform:
   m_LocalScale: {x: 3, y: 0.2, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1735122181934600067}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1735122181950724187
 MeshFilter:
@@ -481,7 +484,7 @@ Transform:
   m_LocalScale: {x: 0.833, y: 1.00909, z: 1.4929199}
   m_Children: []
   m_Father: {fileID: 1735122181934600067}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2463493540204447712
 Camera:
@@ -533,3 +536,33 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3374689891909785138}
   m_Enabled: 1
+--- !u!1 &8567560737695334232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1751554057186588594}
+  m_Layer: 0
+  m_Name: LanzaMorteros
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1751554057186588594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567560737695334232}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12999725, y: -2.13, z: 0.99}
+  m_LocalScale: {x: 1, y: 0.9737, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1735122181934600067}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
