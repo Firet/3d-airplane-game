@@ -324,11 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  yawSpeed: 1
   forwardSpeed: 53
   heightSpeed: 50
   stopSpeed: 1
   turboSpeed: 1
+  yawSpeed: 1
+  rollSpeed: 1
   gm: {fileID: 0}
 --- !u!65 &1735122181934600065
 BoxCollider:

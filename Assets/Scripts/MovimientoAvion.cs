@@ -5,20 +5,21 @@ using UnityEngine;
 public class MovimientoAvion : MonoBehaviour {
 
 	public Rigidbody rb;
-	public float yawSpeed;
 	[Tooltip("Esto cambia la velocidad")]
     [Range(0, 150)] 	 
 	public float forwardSpeed;
 	public float heightSpeed;
 	public float stopSpeed;
 	public float turboSpeed;
+	public float yawSpeed;
+	public float rollSpeed;
 	
 	public GameMaster gm;
 	
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
 		float drag = rb.drag;
-		Debug.Log("El script fue agregado a: " + gameObject.name);
+		//Debug.Log("El script fue agregado a: " + gameObject.name);
 	}	
 
 	void FixedUpdate () {
@@ -59,7 +60,7 @@ public class MovimientoAvion : MonoBehaviour {
 
 		//Esto es para que gire(roll)
 		float ejeInvertido = - 1;
-		gameObject.transform.Rotate(Input.GetAxis("Vertical"), 0, ejeInvertido * Input.GetAxis("Horizontal"));
+		gameObject.transform.Rotate(Input.GetAxis("Vertical"), 0, ejeInvertido * Input.GetAxis("Horizontal") * rollSpeed);
 		
 		
 		//Esto es para que vaya para adelante
@@ -69,8 +70,8 @@ public class MovimientoAvion : MonoBehaviour {
 		//forwardSpeed -= transform.forward.y * Time.deltaTime * 20.0f;
 
 		// Velocidad mímina
-		if(forwardSpeed < 35) {
-			forwardSpeed = 35; 
+		if(forwardSpeed < 0) {
+			forwardSpeed = 0; 
 		}
 
 		// Velocidad máxima

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Piso
+  - Enemigo
   layers:
   - Default
   - TransparentFX
