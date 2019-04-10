@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ComportamientoMisil : MonoBehaviour
 {
-    //lista de gameobjects a destruir, por ahora son solo los tanques
 
+    //lista de gameobjects a destruir, por ahora solo los tanques
     List<GameObject> tanques;
 
 

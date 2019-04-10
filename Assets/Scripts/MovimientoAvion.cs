@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoAvion : MonoBehaviour {
-
+public class MovimientoAvion : MonoBehaviour 
+{
 	public Rigidbody rb;
 	[Tooltip("Esto cambia la velocidad")]
     [Range(0, 150)] 	 
@@ -22,31 +22,38 @@ public class MovimientoAvion : MonoBehaviour {
 	Vector3 pos;
 	Vector3 posicionPrevia;
 
-	void Start () {
+	void Start () 
+	{
 		rb = gameObject.GetComponent<Rigidbody>();
 		float drag = rb.drag;
 		//Debug.Log("El script fue agregado a: " + gameObject.name);
 	}	
 
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
 
-		if (Input.GetKey("r")) {
+		if (Input.GetKey("r"))
+		{
 			Debug.Log("Vas a ir para arriba");
 			rb.AddForce(new Vector3(0,1,0) * heightSpeed);
 		}
-		else if (Input.GetKey("f")) {
+		else if (Input.GetKey("f"))
+		{
 			Debug.Log("Vas a ir para abajo");
 			rb.AddForce(new Vector3(0,-1,0) * heightSpeed);
 		}
-		else if (Input.GetKey("e")) {
+		else if (Input.GetKey("e"))
+		{
 			//Debug.Log("yaw en dirección horaria");
 			gameObject.transform.Rotate(0, 1 * yawSpeed, 0);
 		}
-		else if (Input.GetKey("q")) {
+		else if (Input.GetKey("q"))
+		{
 			//Debug.Log("yaw en dirección anti horaria");
 			gameObject.transform.Rotate(0, - 1 * yawSpeed, 0);
 		}
-		else if (Input.GetKey("z")) {
+		else if (Input.GetKey("z"))
+		{
 			Debug.Log("Estás frenando");
 			//gameObject.transform.position -= gameObject.transform.forward * Time.deltaTime * stopSpeed; 
 			
@@ -56,12 +63,12 @@ public class MovimientoAvion : MonoBehaviour {
 		// 	Debug.Log("Freno total");	
 		//  	forwardSpeed = 0;		
 		// }
-		else if (Input.GetKey("x")) {
+		else if (Input.GetKey("x"))
+		{
 			Debug.Log("Estás usando la propulsión");
 			//gameObject.transform.position += gameObject.transform.forward * Time.deltaTime * turboSpeed;
 
 			forwardSpeed +=turboSpeed; 
-
 		}
 
 
@@ -94,17 +101,20 @@ public class MovimientoAvion : MonoBehaviour {
 		//forwardSpeed -= transform.forward.y * Time.deltaTime * 20.0f;
 
 		// Velocidad mímina
-		if(forwardSpeed < 0) {
+		if(forwardSpeed < 0) 
+		{
 			forwardSpeed = 0; 
 		}
 
 		// Velocidad máxima
-		if(forwardSpeed > 100) {
+		if(forwardSpeed > 100) 
+		{
 			forwardSpeed = 100; 
 		}
 	}
 
-	public void OnCollisionEnter(Collision choque) {
+	public void OnCollisionEnter(Collision choque) 
+	{
 		
 		if(choque.gameObject.tag == "Piso")
         {
@@ -112,7 +122,8 @@ public class MovimientoAvion : MonoBehaviour {
 			Destroy(gameObject);
         }
 	}
-	public void OnCollisionExit(Collision choque) {
+	public void OnCollisionExit(Collision choque)
+	{
 		
 		if(choque.gameObject.tag == "Piso")
         {
