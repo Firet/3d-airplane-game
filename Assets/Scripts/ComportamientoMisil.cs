@@ -5,28 +5,30 @@ using UnityEngine;
 public class ComportamientoMisil : MonoBehaviour
 {
 
-    //lista de gameobjects a destruir, por ahora solo los tanques
-    List<GameObject> tanques;
-
+    List<GameObject> enemigos;
+    [Range(0,200)]
+    public float cantidadDaño = 100;
 
     private void Start()
     {
-        tanques = new List<GameObject>();
+        enemigos = new List<GameObject>();
     }
 
     private void OnCollisionEnter(Collision collision)    
     {
         Debug.Log("Misil detonado");
-        Destroy(gameObject);
+        foreach(GameObject enemigo in enemigos) {
+            enemigo.GetComponent<ComportamientoEnemigo>().RecibirDaño(cantidadDaño);
+        }
 
-        //forEach y llamar funcion que haga daño
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Enemigo")) 
         {
-            tanques.Add(other.gameObject);
+            enemigos.Add(other.gameObject);
         }    
     }
 
@@ -34,7 +36,7 @@ public class ComportamientoMisil : MonoBehaviour
     {
         if(other.CompareTag("Enemigo")) 
         {
-            tanques.Remove(other.gameObject);
+            enemigos.Remove(other.gameObject);
         }    
     }
 }

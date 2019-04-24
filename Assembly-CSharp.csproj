@@ -62,7 +62,9 @@
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <Compile Include="Assets\Scripts\Autodestruir.cs" />
+     <Compile Include="Assets\Scripts\ComportamientoEnemigo.cs" />
      <Compile Include="Assets\Scripts\ComportamientoMisil.cs" />
+     <Compile Include="Assets\Scripts\comportamientoSalud.cs" />
      <Compile Include="Assets\Scripts\CrearTanques.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\MovimientoAvion.cs" />
