@@ -20,8 +20,6 @@ public class comportamientoSalud : MonoBehaviour
 
     public void RecibirEstadoVida(float vida)
     {
-        
         barraDeVida.localScale = new Vector3(vida, 1, 1);
-
     }
 }

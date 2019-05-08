@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovimientoAvion : MonoBehaviour 
 {
 	public Rigidbody rb;
-	[Tooltip("Esto cambia la velocidad")]
+	[Tooltip("Forward Speed")]
     [Range(0, 150)] 	 
 	public float forwardSpeed;
 	public float heightSpeed;
@@ -13,9 +13,18 @@ public class MovimientoAvion : MonoBehaviour
 	public float turboSpeed;
 	public float yawSpeed;
 	public float rollSpeed;
-	
+
+	[HideInInspector]
 	public GameMaster gm;
 
+	[Header("Balística")]
+	int currentGunPoint = 0;
+	public float firingRate = 0.5f;
+	float timeToShoot = 0;
+	bool isFiring = false;
+	// array con dos lugares, de los lugares donde aparecen los disparos de la ametralladora
+	public Transform[] gunPoints;
+	public GameObject explosion; 
 	public Transform spawnMisil;
 	public GameObject misil;
 
@@ -112,6 +121,27 @@ public class MovimientoAvion : MonoBehaviour
 			forwardSpeed = 100; 
 		}
 	}
+	void Update () 
+	{
+		// Cuando presiono la tecla k
+		if(Input.GetKeyDown(KeyCode.K))
+		{
+			isFiring = true;
+		}
+		// Cuando suelto la tecla k
+		else if (Input.GetKeyUp(KeyCode.K))
+		{
+			isFiring = false;
+		}
+		//Time.time es el tiempo absoluto del juego, es un float que dice en segundos cuando tiempo pasó
+		if(isFiring && Time.time > timeToShoot)
+		{
+			ShootMachineGun();
+			// Después de disparar setea el tiempo para disparar al tiempo actual más la separación de un disparo y otro (en segundos)
+			timeToShoot = Time.time + firingRate;
+		}
+
+	} 
 
 	public void OnCollisionEnter(Collision choque) 
 	{
@@ -130,7 +160,33 @@ public class MovimientoAvion : MonoBehaviour
 			Debug.Log("Salió de la colisión " + choque.gameObject.tag);
         }
 	}
+
+	void ShootMachineGun() 
+	{
+		// creo una clase RaycastHIt que guarda todos los datos del raycast, hit es el nombre(es el estandar)
+		RaycastHit hit;
+		
+		/* se hace con if para chequear que cuando no choque con nada no haga cuentas sobre vacío ni sobre el objeto anterior
+		Raycast(posición, dirección, información del hit, [distancia máxima])
+		Con el out pasas directamente la dirección de memoria 
+		El raycast devuelve true o false si choca con algo
+		*/
+		if ( Physics.Raycast(gunPoints[currentGunPoint % 2].position, transform.TransformDirection(Vector3.forward), out hit))
+		{
+			// instancio una explosion donde choca el rayo. Despues sacar
+			Instantiate(explosion, hit.point, Quaternion.identity);
+
+			// cambio de metralleta
+			currentGunPoint ++;
+			// Debug para ver el rayo blanco en la escena, no en el juego
+			Debug.DrawRay(gunPoints[currentGunPoint % 2].position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white, 2.0f);
+		}
+
+	}
+
 }
+
+
 
 
 

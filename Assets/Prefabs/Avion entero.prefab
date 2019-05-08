@@ -308,6 +308,8 @@ Transform:
   - {fileID: 1735122181887420939}
   - {fileID: 1735122181950724160}
   - {fileID: 1735122181344807710}
+  - {fileID: 2310961589220103733}
+  - {fileID: 7757361224145203928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -330,7 +332,13 @@ MonoBehaviour:
   turboSpeed: 1
   yawSpeed: 1
   rollSpeed: 1
+  cadenciaDeDisparo: 0.5
+  gunPoints:
+  - {fileID: 2310961589220103733}
+  - {fileID: 7757361224145203928}
   gm: {fileID: 0}
+  explosion: {fileID: 4438470047723964350, guid: a55c193dc1f87f14883e95a5acf81462,
+    type: 3}
   spawnMisil: {fileID: 1751554057186588594}
   misil: {fileID: 308085430452670670, guid: c66ae58c056c91849be8600ac08a0d6a, type: 3}
 --- !u!65 &1735122181934600065
@@ -453,6 +461,66 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3035626588290765664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2310961589220103733}
+  m_Layer: 0
+  m_Name: Metralladora izquierda
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2310961589220103733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3035626588290765664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.77, y: 0, z: 2.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1735122181934600067}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3180944371248516964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7757361224145203928}
+  m_Layer: 0
+  m_Name: Metralladora derecha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7757361224145203928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3180944371248516964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.96, y: 0, z: 2.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1735122181934600067}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8567560737695334232
 GameObject:
   m_ObjectHideFlags: 0

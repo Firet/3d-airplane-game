@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a08098b72537644ba0f46f4d3274c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 200
+  vidaRestante: 300
   puedeDisparar: 0
   velocidadDisparo: 1
   csalud: {fileID: 4080858536060737294}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComportamientoEnemigo : MonoBehaviour
 {
 
-    public float vida = 100;
+    public float vidaRestante = 100;
     float vidaTotal;
     public bool puedeDisparar;
     public float velocidadDisparo = 1;
@@ -14,19 +14,19 @@ public class ComportamientoEnemigo : MonoBehaviour
 
     public void Start() 
     {
-        vidaTotal = vida;
+        vidaTotal = vidaRestante;
     }
     public void RecibirDaño(float dañoRecibido) 
     {
         
-        vida -= dañoRecibido;
-        if(vida <= 0) 
+        vidaRestante -= dañoRecibido;
+        if(vidaRestante <= 0) 
         {
             Destroy(gameObject);
         }
         if(csalud) 
         {
-            csalud.RecibirEstadoVida(vida / vidaTotal);
+            csalud.RecibirEstadoVida(vidaRestante / vidaTotal);
         }
      }
 }
